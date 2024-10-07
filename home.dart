@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Define o widget principal como um StatefulWidget
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -7,15 +8,18 @@ class Home extends StatefulWidget {
   _HomeState createState() => _HomeState();
 }
 
+// Define o estado do widget Home
 class _HomeState extends State<Home> {
-  bool _isBalanceVisible =
-      true; // Variável para controlar a visibilidade do saldo
+  // Variável para controlar a visibilidade do saldo
+  bool _isBalanceVisible = true;
 
   @override
   Widget build(BuildContext context) {
+    // Retorna um MaterialApp com Scaffold para a estrutura básica do app
     return MaterialApp(
       title: "NuBank",
       home: Scaffold(
+        // AppBar com ícones e ações
         appBar: AppBar(
           backgroundColor: const Color(0xff7801db), // Cor da Nubank
           leading: IconButton(
@@ -26,17 +30,18 @@ class _HomeState extends State<Home> {
             },
           ),
           actions: [
+            // Ícone de visibilidade para alternar o saldo
             IconButton(
               icon: Icon(
                 _isBalanceVisible
                     ? Icons.visibility_outlined
                     : Icons.visibility_off_outlined,
               ),
-              color: const Color(0xFFF5F5F5), // Ícone de visão
+              color: const Color(0xFFF5F5F5), // Cor do ícone
               onPressed: () {
+                // Alterna a visibilidade do saldo
                 setState(() {
-                  _isBalanceVisible =
-                      !_isBalanceVisible; // Alterna a visibilidade
+                  _isBalanceVisible = !_isBalanceVisible;
                 });
               },
             ),
@@ -56,10 +61,11 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
+        // Corpo da tela com SingleChildScrollView para rolar o conteúdo
         body: SingleChildScrollView(
           child: Column(
             children: [
-              // Seção "Conta" com saldo abaixo
+              // Seção "Conta" com saldo
               Container(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
@@ -79,10 +85,9 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                     const SizedBox(height: 8),
+                    // Exibe o saldo ou oculta com asteriscos
                     Text(
-                      _isBalanceVisible
-                          ? 'R\$ 1000'
-                          : '******', // Condição de visibilidade do saldo
+                      _isBalanceVisible ? 'R\$ 1000' : '******',
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -91,11 +96,10 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-
               // Botões de ação
               _buildActionButtons(),
 
-              //Container para "Meus Cartões"
+              // Container para "Meus Cartões"
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Container(
@@ -110,8 +114,7 @@ class _HomeState extends State<Home> {
                       const Icon(Icons.credit_card,
                           size: 25,
                           color: Color(0xff000000)), // Ícone de cartão
-                      const SizedBox(
-                          width: 10), // Espaço entre o ícone e o texto
+                      const SizedBox(width: 10), // Espaçamento entre ícone e texto
                       const Text(
                         "Meus Cartões",
                         style: TextStyle(
@@ -143,7 +146,7 @@ class _HomeState extends State<Home> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xff7801db),
+                          color: Color(0xff7801db), // Cor roxa
                         ),
                       ),
                       SizedBox(height: 5),
@@ -159,7 +162,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
 
-              // Divider para separar as seções
+              // Divisores para separar seções
               const Divider(thickness: 1, color: Colors.grey),
 
               // Seção Cartão de Crédito
@@ -305,8 +308,7 @@ class _HomeState extends State<Home> {
             borderRadius: BorderRadius.circular(12), // Bordas arredondadas
           ),
           child: Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.start, // Alinhamento à esquerda
+            crossAxisAlignment: CrossAxisAlignment.start, // Alinhamento à esquerda
             children: [
               // Imagem integrada ao retângulo
               ClipRRect(
@@ -322,11 +324,9 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.all(16.0), // Espaço interno do retângulo
+                padding: const EdgeInsets.all(16.0), // Espaço interno do retângulo
                 child: Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start, // Alinhamento à esquerda
+                  crossAxisAlignment: CrossAxisAlignment.start, // Alinhamento à esquerda
                   children: [
                     // Texto "Seguro de Vida"
                     const Text(
@@ -347,8 +347,7 @@ class _HomeState extends State<Home> {
                         color: Colors.grey, // Cor do texto
                       ),
                     ),
-                    const SizedBox(
-                        height: 10), // Espaço entre os textos e o botão
+                    const SizedBox(height: 10), // Espaço entre os textos e o botão
 
                     // Botão "Conhecer"
                     ElevatedButton(
